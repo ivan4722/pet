@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Switch, Route, Router } from "wouter";
 import Home from "../pages/home";
-import About from "../pages/about";
+import Login from "../pages/login";
+import Register from "../pages/register"; 
 
 /**
 * The router is imported in app.jsx
@@ -14,7 +15,6 @@ import About from "../pages/about";
 export default () => (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
     </Switch>

@@ -25,8 +25,6 @@ export default function Home() {
         <div className="links">
           <Link href="/">Home</Link>
           <span className="divider">|</span>
-          <Link href="/about">About</Link>
-          <span className="divider">|</span>
           <Link href="/register">Register</Link>
           <span className="divider">|</span>
           <Link href="/login">Login</Link>
