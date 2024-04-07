@@ -3,12 +3,37 @@ import React, { useState } from 'react';
 function Register({ onRegister }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState(''); // Added for feedback
 
   const handleRegister = () => {
-    // Perform validation if needed
+    // Simple validation
+    if (!username || !password) {
+      setMessage('Username and password are required');
+      return;
+    }
 
-    // Call the onRegister function passed from the parent component
-    onRegister({ username, password });
+    fetch('http://104.162.234.229:3000/register', { // Use your backend's actual IP address and port
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      }
+      throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+      console.log(data); // Log or handle the response from the server
+      setMessage('Registration successful');
+      onRegister(true); // Assuming you want to do something on successful registration
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+      setMessage('Registration failed');
+    });
   };
 
   return (
@@ -28,6 +53,7 @@ function Register({ onRegister }) {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Register
       </button>
+      {message && <p className="mt-4 text-center text-red-500">{message}</p>} {/* Display feedback */}
     </div>
   );
 }

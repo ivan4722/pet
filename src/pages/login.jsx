@@ -5,9 +5,6 @@ function Login({ onLogin }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Perform validation if needed
-
-    // Call the onLogin function passed from the parent component
     onLogin({ username, password });
   };
 
