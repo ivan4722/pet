@@ -2,6 +2,8 @@ import React from "react";
 import { Router, Link } from "wouter";
 import PageRouter from "./components/router.jsx";
 import Seo from './components/seo.jsx';
+import './styles/styles.css';
+
 
 export default function Home() {
   return (
@@ -9,12 +11,11 @@ export default function Home() {
       <Seo />
       <header className="header flex justify-between items-center p-4">
         <Link href="/">
-          <img src="https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/logo.jpg?v=1712521889673" alt="Logo" className="logo" />
+          <img src="https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/logo-removebg-preview%20(1).png?v=1712523126097" alt="Logo" className="logo" />
         </Link>
         <div className="links flex gap-4">
-          <Link href="/register" className="text-blue-500 hover:text-blue-700 transition duration-150 ease-in-out">Register</Link>
-          <span className="text-gray-300">|</span>
-          <Link href="/login" className="text-blue-500 hover:text-blue-700 transition duration-150 ease-in-out">Login</Link>
+          <Link href="/register" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-150 ease-in-out">Register</Link>
+          <Link href="/login" className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-150 ease-in-out">Login</Link>
         </div>
       </header>
       <main role="main" className="wrapper">
@@ -26,3 +27,4 @@ export default function Home() {
     </Router>
   );
 }
+
