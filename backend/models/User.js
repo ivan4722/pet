@@ -7,6 +7,6 @@ const userSchema = new Schema({
   // Add other fields as necessary
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('PetUser', userSchema);
 
 export default User;
