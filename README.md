@@ -9,7 +9,7 @@ PetShare allows you to raise a virtual pet by yourself, with a friend, or with a
 Does your significant other live far away? Surprise them with a virtual pet!
 
 
-### 1. Planning
+### Planning
 
 Scope: 
 - web application
@@ -25,5 +25,9 @@ Objective:
 
 Sitemap:
 ![ex](https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/Screenshot%202024-04-08%20at%2011.36.15%20AM.png?v=1712590598893)
+
+### Prototype Website
+![ex1](https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/Screenshot%202024-04-10%20at%204.25.32%20PM.png?v=1712780789109)
+![ex2](https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/Screenshot%202024-04-10%20at%204.25.40%20PM.png?v=1712780792056)
 
 
