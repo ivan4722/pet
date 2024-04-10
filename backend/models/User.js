@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // Add other fields as necessary
+  pets: [{ type: Schema.Types.ObjectId, ref: 'Pet' }], 
 });
 
 const User = mongoose.model('PetUser', userSchema);
