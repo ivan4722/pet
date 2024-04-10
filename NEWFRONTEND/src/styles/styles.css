@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-nav-item {
+    font-size: 16px;
+    line-height: 18.75px;
+    letter-spacing: 0;
+    color: #191919;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 35px;
+    cursor: pointer;
+    height: 100%;
+    position: relative;
+    opacity: 1;
+    transition: opacity 400ms;
+}
+.header-nav-item:hover {
+    color: #c2c2c2; 
+}
+
+.logregbtn {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 100ms ease-in-out 0s;
+    border: none;
+    box-shadow: none;
+    min-width: 44px;
+    height: 44px;
+    padding: 0px 24px;
+    border-radius: 100px;
+    background: #fd4d50;
+    color: rgb(255, 255, 255);
+    letter-spacing: normal;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+}
+.a5-cta {
+    display: inline-block;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 45px;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    background: #fa4e54;
+    transition: background 300ms ease-in-out;
+}
+.a5-cta:hover{
+    background: #f7979a;
+}
+.a6-cta { 
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 45px;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    background: #fa4e54;
+    transition: background 300ms ease-in-out;
+}
+.a6-cta:hover{
+    background: #f7979a;
+}
+
+.header-nav-item, .a5-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px; 
+    padding: 0 45px; 
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 300ms ease-in-out;
+    cursor: pointer;
+}
+
