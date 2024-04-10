@@ -18,7 +18,7 @@ const MyPets = () => {
 
     useEffect(() => {
         if (username) {
-            fetch(`http://localhost:3001/user-pets?username=${username}`)
+            fetch(`http://3.21.171.71:3001/user-pets?username=${username}`)
                 .then(response => response.json())
                 .then(data => setPets(data)) 
                 .catch(console.error);
@@ -31,7 +31,7 @@ const MyPets = () => {
     const sharePet = (petId) => {
         const recipientUsername = prompt('Enter the username of the person you want to share this pet with:');
         if (recipientUsername && username) { 
-            fetch('http://localhost:3001/share-pet', {
+            fetch('http://3.21.171.71:3001/share-pet', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const MyPets = () => {
 const renamePet = (petId) => {
     const newName = prompt('Enter new name for your pet:');
     if (newName) {
-        fetch('http://localhost:3001/rename-pet', {
+        fetch('http://3.21.171.71:3001/rename-pet', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
