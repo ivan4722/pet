@@ -6,7 +6,7 @@ Whether you're in a no-pets building, don't want to deal with pet fees, or simpl
 
 PetShare allows you to raise a virtual pet by yourself, with a friend, or with a significant other, completely free.
 
-Does your significant other live far away? Surprise her with a virtual pet!
+Does your significant other live far away? Surprise them with a virtual pet!
 
 
 ### 1. Planning
