@@ -1,41 +1,76 @@
 import * as React from "react";
-import { animated } from "react-spring";
-import { useWiggle } from "../hooks/wiggle";
 import { Link } from "wouter";
-
-
-/**
-* The Home function defines the content that makes up the main content of the Home page
-*
-* This component is attached to the /about path in router.jsx
-* The function in app.jsx defines the page wrapper that this appears in along with the footer
-*/
+import { useAuth } from '../components/AuthContext';
+import "../styles/styles.css";
 
 export default function Home() {
+    const { isLoggedIn, username, logout } = useAuth();
 
-  return (
-    <>
-      <main role="main" className="wrapper">
-        <div className="relative">
-          <img src="https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/DALL%C2%B7E%202024-04-07%2016.58.55%20-%20Create%20a%20colorful%2C%20clipart-style%20image%20showing%20pets%20with%20their%20owners%20playing%20in%20a%20park.%20The%20scene%20should%20include%20three%20pairs%20of%20owners_%20one%20male%20and%20.webp?v=1712523599445" alt="Pets with their owners playing in a park" className="max-w-full h-auto inline-block" />
-          <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-center w-48">
-            <div className="bg-white border-black border rounded p-4">
-              <p><strong>Raising a pet is a hard task.</strong></p>
-              <p>Whether your apartment doesn't allow pets, worried about vet bills, or you're just busy, PetShare can solve your issues!</p>
-            </div>
-          </div>
-          <div className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2 text-center w-48">
-            <div className="bg-white border-black border rounded p-4">
-              <p><strong>What is PetShare?</strong></p>
-              <p>PetShare allows you to raise a virtual pet by yourself, with a friend, or with a significant other, completely free.</p>
-              <p>Does your significant other live far away? Surprise her with a virtual pet!</p>
-            </div>
-          </div>
-        </div>
-        <div className="content">
-          <PageRouter />
-        </div>
-      </main>
-    </>
-  );
+    return (
+        <>
+            <header className="flex justify-between items-center p-4 w-full">
+                <Link href="/" className="flex items-center">
+                    <img src="https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/image-removebg-preview%20(1).png?v=1712523257157" alt="Small Logo" className="h-14 w-14 mr-2" />
+                    <img src="https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/logo.jpg?v=1712521889673" alt="Main Logo" className="h-12 w-auto" />
+                </Link>
+                <div className="flex-grow text-center">
+                    <Link href="/shop" className="header-nav-item">Shop</Link>
+                    <Link href="/mypets" className="header-nav-item">My Pets</Link>
+                </div>
+                <div className="links flex">
+                    {isLoggedIn ? (
+                        <>
+                            <span className="a5-cta"> Welcome, {username}!</span>
+                            <button onClick={logout} className="header-nav-item">Logout</button>
+                        </>
+                    ) : (
+                        <>
+                            <Link href="/login" className="header-nav-item">Login</Link>
+                            <Link href="/register" className="a5-cta">Register</Link>
+                        </>
+                    )}
+                </div>
+            </header>
+            <main role="main" className="wrapper relative">
+                <img src="https://cdn.glitch.global/dcb52c92-9cfa-4586-a1f5-7105f686edb4/Screenshot%202024-04-08%20at%2012.14.24%20AM.png?v=1712549708318" alt="Background" className="absolute inset-0 w-full h-full object-cover filter blur-sm" />
+                <div className="relative text-center p-10">
+                    <div className="bg-black bg-opacity-50 p-5 rounded-lg inline-block">
+                        <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
+                            Raising a pet is <span style={{ color: '#fa4e54' }}>hard</span>.
+                        </h1>
+                        <p className="text-white text-xl md:text-3xl mb-4">
+                            Why not raise your own online pet <span style={{ color: '#fa4e54' }}>hassle-free</span>? Try it, it's <span style={{ color: '#fa4e54' }}>fun</span>!
+                        </p>
+                        <Link href="/shop" className="a5-cta">Start your journey</Link>
+                    </div>
+                </div>
+            </main>
+            <section className="py-10 bg-gray-100">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-4">About PetShare</h2>
+                    <p className="text-lg text-center">
+                        PetShare is an innovative platform designed to bring pet lovers together. Whether you're looking to raise a virtual pet or connect with other pet enthusiasts, PetShare offers a unique online experience. Dive into a world where caring for your digital companion can be as rewarding as the real thing—without the same level of commitment or responsibility. Join our community and share the joy of pet ownership with others who share your passion.
+                    </p>
+                </div>
+            </section>
+
+            <section className="py-10">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-4">How it Works</h2>
+                    <p className="text-lg text-center">
+                        Getting started with PetShare is easy and fun! Simply register an account, and you're ready to adopt your very first online pet. Browse our extensive selection of virtual pets in the shop, pick your favorite, and begin your journey. Care for your pet by feeding, playing, and attending to its needs. Experience the joy of pet ownership in a whole new way with PetShare.
+                    </p>
+                </div>
+            </section>
+
+            <section className="py-10 bg-gray-100">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-4">Sharing Pets</h2>
+                    <p className="text-lg text-center">
+                        PetShare allows you to raise your online pet with a friend, significant other, or by yourself! To share your pet, simply click the "Share Pet" button and enter the other person's username. This way, you can share the excitement of your online pet with others around you!
+                    </p>
+                </div>
+            </section>
+        </>
+    );
 }
