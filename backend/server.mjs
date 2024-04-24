@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import cors from 'cors';
 import User from './models/User.js';
 import Pet from './models/Pet.js';
+import cron from 'node-cron';
 
 const app = express();
 const PORT = 3001;
@@ -15,6 +16,24 @@ app.use(cors());
 mongoose.connect('mongodb://localhost:27017/petshare', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
+
+const decreasePetHunger = async () => {
+  try {
+      const pets = await Pet.find();
+      for (const pet of pets) {
+          if (pet.hunger > 1) {
+              pet.hunger -= 1;
+              await pet.save();
+          }
+      }
+      console.log('Pet hunger levels decreased.');
+  } catch (error) {
+      console.error('Error decreasing pet hunger levels:', error);
+  }
+};
+cron.schedule('0 */2 * * *', () => {
+  decreasePetHunger();
+});
 
 app.post('/register', async (req, res) => {
   console.log("POSTED");
@@ -41,6 +60,7 @@ app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
+    console.log(req.body)
     if (user && await bcrypt.compare(password, user.password)) {
       console.log("success");
       res.status(200).send('Login successful');
@@ -96,6 +116,71 @@ app.get('/user-pets', async (req, res) => {
       res.status(500).send('Error fetching user pets');
   }
 });
+
+app.post('/feed-pet', async (req, res) => {
+  try {
+    const { petId } = req.body;
+
+    const pet = await Pet.findById(petId);
+    if (!pet) {
+      return res.status(404).send('Pet not found');
+    }
+    pet.hunger = Math.min(10, pet.hunger + 1);
+
+    await pet.save();
+
+    res.status(200).send('Pet fed successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error feeding pet');
+  }
+});
+app.get('/check-last-played/:petId', async (req, res) => {
+  try {
+      const { petId } = req.params;
+      const pet = await Pet.findById(petId);
+      if (!pet) {
+          return res.status(404).json({ error: 'Pet not found' });
+      }
+      res.status(200).json({ lastPlayed: pet.lastPlayed });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/play-with-pet', async (req, res) => {
+  try {
+    const { petId } = req.body;
+    console.log(req.body);
+
+    // Find the pet by its ID
+    const pet = await Pet.findById(petId);
+    console.log(pet);
+    if (!pet) {
+      return res.status(404).send('Pet not found');
+    }
+
+    // Update the lastPlayed field to the current time
+    pet.lastPlayed = new Date();
+
+    // Save the updated pet document back to the database
+    await pet.save();
+
+    // Calculate whether the pet was played with within the last 24 hours
+    const currentTime = new Date().getTime();
+    const lastPlayedTimestamp = pet.lastPlayed.getTime();
+    const timeDifferenceHours = (currentTime - lastPlayedTimestamp) / (1000 * 60 * 60);
+    const isWithin24Hours = timeDifferenceHours <= 24;
+
+    // Send the response indicating whether the pet was played with within the last 24 hours
+    res.json({ isWithin24Hours });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error checking pet play status');
+  }
+});
+
 
 app.patch('/rename-pet', async (req, res) => {
   try {

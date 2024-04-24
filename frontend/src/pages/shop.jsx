@@ -38,7 +38,7 @@ export default function Shop() {
             return;
         }
     
-        fetch('http://3.21.171.71:3001/adopt', {
+        fetch('http://localhost:3001/adopt', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

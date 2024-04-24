@@ -20,6 +20,26 @@
     color: #c2c2c2; 
 }
 
+
+.progress-bar {
+    width: 50%;
+    height: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: lightgray;
+  }
+  
+  .progress-bar::-webkit-progress-bar {
+    background-color: lightgray;
+  }
+  
+  .progress-bar::-webkit-progress-value {
+    background-color: #87d5b8;
+    border-radius: 10px;
+  }
+  
+  
+
 .logregbtn {
     display: flex;
     -webkit-box-align: center;

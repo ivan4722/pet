@@ -12,7 +12,7 @@ function Register({ onRegister }) {
       return;
     }
 
-    fetch('http://3.21.171.71:3001/register', {
+    fetch('http://localhost:3001/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
