@@ -13,9 +13,16 @@ const PORT = 3001;
 app.use(bodyParser.json());
 app.use(cors()); 
 
-mongoose.connect('mongodb://localhost:27017/petshare', { useNewUrlParser: true, useUnifiedTopology: true })
+const connectionURI = 'mongodb://ivan:ivan4722@localhost/admin';
+
+mongoose.connect(connectionURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
+
+
+  app.get('/test', (req, res) => {
+    res.json({ message: 'hello' });
+  });
 
 const decreasePetHunger = async () => {
   try {
@@ -139,6 +146,7 @@ app.get('/check-last-played/:petId', async (req, res) => {
   try {
       const { petId } = req.params;
       const pet = await Pet.findById(petId);
+      console.log(pet)
       if (!pet) {
           return res.status(404).json({ error: 'Pet not found' });
       }
@@ -229,4 +237,8 @@ app.post('/share-pet', async (req, res) => {
       res.status(500).send('Error sharing the pet');
   }
 });
-app.listen(PORT, 'localhost', () => console.log(`Server running on port ${PORT}`));
+app.listen(3001, '0.0.0.0', () => {
+  console.log('Server is running on port 3001');
+});
+
+//app.listen(PORT, 'localhost', () => console.log(`Server running on port ${PORT}`));

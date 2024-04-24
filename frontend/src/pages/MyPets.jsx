@@ -11,7 +11,7 @@ const MyPets = () => {
 
     useEffect(() => {
         if (username) {
-            fetch(`http://localhost:3001/user-pets?username=${username}`)
+            fetch(`http://3.21.171.71:3001/user-pets?username=${username}`)
                 .then(response => response.json())
                 .then(data => setPets(data)) 
                 .catch(console.error);
@@ -22,7 +22,7 @@ const MyPets = () => {
         const petMoodData = {};
         for (const pet of pets) {
             try {
-                const response = await fetch(`http://localhost:3001/check-last-played/${pet._id}`);
+                const response = await fetch(`http://3.21.171.71:3001/check-last-played/${pet._id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch last played date for the pet');
                 }
@@ -50,7 +50,7 @@ const MyPets = () => {
     const sharePet = (petId) => {
         const recipientUsername = prompt('Enter the username of the person you want to share this pet with:');
         if (recipientUsername && username) { 
-            fetch('http://localhost:3001/share-pet', {
+            fetch('http://3.21.171.71:3001/share-pet', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const MyPets = () => {
     const renamePet = (petId) => {
         const newName = prompt('Enter new name for your pet:');
         if (newName) {
-            fetch('http://localhost:3001/rename-pet', {
+            fetch('http://3.21.171.71:3001/rename-pet', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const MyPets = () => {
     };
     const playWithPet = async (petId) => {
         try {
-            const response = await fetch('http://localhost:3001/play-with-pet', {
+            const response = await fetch('http://3.21.171.71:3001//play-with-pet', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -118,7 +118,6 @@ const MyPets = () => {
     
             const data = await response.json();
             if (data.isWithin24Hours) {
-                // If the play is successful and within 24 hours, refresh the page
                 window.location.reload();
             }
         } catch (error) {
@@ -128,7 +127,7 @@ const MyPets = () => {
     };
     
     const feedPet = (petId) => {
-        fetch('http://localhost:3001/feed-pet', {
+        fetch('http://3.21.171.71:3001/feed-pet', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -177,7 +176,6 @@ const MyPets = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         {pets.map((pet, index) => (
                             <div key={index} className="text-center">
-                                {/* Pet image, name, and mood */}
                                 <img src={findPetImage(pet.type)} alt={pet.type} className="mx-auto" style={{ width: '100px', height: '100px' }} />
                                 <p>{pet.name}</p>
                                 {petMoods[pet._id] ? (
@@ -205,9 +203,7 @@ const MyPets = () => {
                                         Share
                                     </button>
                                 </div>
-                                {/* Progress bar */}
                                 <ProgressBarDifferentColour currentValue={pet.hunger} maxValue={10} />
-                                {/* Feed button */}
                                 <button 
                                     onClick={() => feedPet(pet._id)} 
                                     className="a10-cta"
