@@ -187,23 +187,20 @@ const MyPets = () => {
                                 )}
                                 <button
                                     onClick={() => playWithPet(pet._id)}
-                                    style={{ backgroundColor: '#38a169', color: 'white', padding: '8px 16px', borderRadius: '4px', cursor: 'pointer', marginTop: '8px' }}
-                                    className="hover:bg-green-700"
+                                    className="a7-cta"
                                     >
                                     Play
                                 </button>
                                 <div className="mb-4 flex justify-center">
                                     <button 
                                         onClick={() => renamePet(pet._id)} 
-                                        style={{ backgroundColor: '#f5545a', color: 'white', padding: '8px 16px', borderRadius: '4px', cursor: 'pointer', marginRight: '8px' }} 
-                                        className="hover:bg-red-700"
+                                        className="a8-cta"
                                     >
                                         Rename
                                     </button>
                                     <button 
                                         onClick={() => sharePet(pet._id)} 
-                                        style={{ backgroundColor: '#01223d', color: 'white', padding: '8px 16px', borderRadius: '4px', cursor: 'pointer' }} 
-                                        className="hover:bg-blue-900"
+                                        className="a9-cta"
                                     >
                                         Share
                                     </button>
@@ -213,8 +210,7 @@ const MyPets = () => {
                                 {/* Feed button */}
                                 <button 
                                     onClick={() => feedPet(pet._id)} 
-                                    style={{ backgroundColor: '#4287f5', color: 'white', marginTop: '8px', padding: '8px 16px', borderRadius: '4px', cursor: 'pointer' }} 
-                                    className="hover:bg-blue-700"
+                                    className="a10-cta"
                                 >
                                     Feed
                                 </button>
@@ -226,6 +222,11 @@ const MyPets = () => {
                     )}
                 </div>
             </div>
+            <div style={{ textAlign: 'center' }}>
+                <p>Click Feed to feed your pet until your pet is full! Your pet will lose 1 hunger point every 2 hours.</p>
+                <p>Click "Play" to play with your pet! If you don't play with your pet for 24 hours, your pet will get bored and sad :(</p>
+            </div>
+
         </>
     );
 };

@@ -85,7 +85,7 @@
     display: inline-block;
     height: 40px;
     line-height: 40px;
-    padding: 0 45px;
+    padding: 0 20px;
     font-size: 16px;
     letter-spacing: 0;
     font-weight: 600;
@@ -101,6 +101,82 @@
     background: #f7979a;
 }
 
+.a7-cta { 
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    background: #ffd86b;
+    transition: background 300ms ease-in-out;
+}
+.a7-cta:hover{
+    background: #ffe9ab;
+}
+.a8-cta { 
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    background: #bf80ff;
+    transition: background 300ms ease-in-out;
+}
+.a8-cta:hover{
+    background: #dfbfff;
+}
+.a9-cta { 
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    background: #ff80ce;
+    transition: background 300ms ease-in-out;
+}
+.a9-cta:hover{
+    background: #ffb8e3;
+}
+.a10-cta { 
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    background: #fa4e54;
+    transition: background 300ms ease-in-out;
+}
+.a10-cta:hover{
+    background: #f7979a;
+}
 .header-nav-item, .a5-cta {
     display: inline-flex;
     align-items: center;
